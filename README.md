@@ -40,3 +40,7 @@
 [ ] It's not allowed registry of an elogio for unauthenticated and invalid users;
 
 [ ] User must be signed/logged in;
+
+## How to run it
+
+### Test
