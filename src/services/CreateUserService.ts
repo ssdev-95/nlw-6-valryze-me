@@ -7,7 +7,7 @@ class CreateUserService {
         const usersRepository = getCustomRepository(UsersRepositories);
 
         if(!email) {
-            throw new Error('Email not found')
+            throw new Error('Invalid email')
         };
 
         const userAlreadyExists = await usersRepository.findOne({
