@@ -16,3 +16,7 @@ export interface IComplimentServiceProps {
     user_receiver: string;
     message: string;
 }
+
+export interface IPayload {
+    sub: string;
+}
