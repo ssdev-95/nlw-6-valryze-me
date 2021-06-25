@@ -1,7 +1,7 @@
 import { getCustomRepository } from "typeorm";
 import { ComplimentsRepositories } from "../repositories/ComplimentsRepositories";
 import { UsersRepositories } from "../repositories/UsersRepositories";
-import { IComplimentServiceProps } from "../types";
+import { IComplimentServiceProps } from "../@types/types";
 
 class CreateComplimentsService {
     async execute({ tag_id, user_receiver, user_sender, message }: IComplimentServiceProps) {
