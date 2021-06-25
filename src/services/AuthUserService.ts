@@ -1,7 +1,7 @@
 import { getCustomRepository } from "typeorm";
 import { compare } from 'bcryptjs';
 import { UsersRepositories } from "../repositories/UsersRepositories";
-import { IUserAuthServiceProps } from "../types";
+import { IUserAuthServiceProps } from "../@types/types";
 import { sign } from "jsonwebtoken";
 require('dotenv/config');
 

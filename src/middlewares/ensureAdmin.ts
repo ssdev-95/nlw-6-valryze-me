@@ -1,9 +1,15 @@
 import { NextFunction, Request, Response } from "express";
+import { getCustomRepository } from "typeorm";
+import { UsersRepositories } from "../repositories/UsersRepositories";
 
-function ensureAdmin(req:Request, res:Response, next:NextFunction) {
-    const isAdmin = true;
+async function ensureAdmin(req:Request, res:Response, next:NextFunction) {
+    const { user_id } = req;
+    const usersRepository = getCustomRepository(UsersRepositories);
+    const { admin } = await usersRepository.findOne(user_id);
 
-    if(isAdmin) return next();
+    if(admin) {
+        return next();
+    }
 
     return res.status(401).json({error: 'Not an admin user.'});
 }

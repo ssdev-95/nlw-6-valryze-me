@@ -1,5 +1,6 @@
 import { Entity, PrimaryColumn, Column, UpdateDateColumn, CreateDateColumn } from "typeorm";
 import { v4 as uuid } from 'uuid';
+import { Exclude, Expose } from 'class-transformer';
 
 @Entity("Users")
 class User {
@@ -12,8 +13,14 @@ class User {
     @Column()
     email: string;
 
+    @Exclude()
     @Column()
     password: string;
+
+    @Expose({name: "passphrase"})
+    encodedPassword(): string {
+        return '*************';
+    };
 
     @Column()
     admin: boolean;

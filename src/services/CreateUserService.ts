@@ -1,7 +1,7 @@
 import { hash } from 'bcryptjs';
 import { getCustomRepository } from 'typeorm';
-import { UsersRepositories } from "../repositories/UsersRepositories"
-import { IUser } from "../types"
+import { UsersRepositories } from "../repositories/UsersRepositories";
+import { IUser } from "../@types/types";
 
 class CreateUserService {
     async execute({name, email, admin=false, password}: IUser) {
