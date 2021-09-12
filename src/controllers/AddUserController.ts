@@ -4,15 +4,21 @@ import { AddUserService } from '../services/AddUserService';
 class AddUserController {
   async handle (req:Request, res:Response) {
     const user = req.body;
-    const addUserService = new AddUserService();
+    try {
+      const addUserService = new AddUserService();
 
-    const token = await addUserService.execute(user);
+      const token = await addUserService.execute(user);
 
-    if (token.trim()!=='') {
-      return res.json({status: 200, token: token});
+      if (token.trim()!=='') {
+        console.log(token);
+        return res.status(200).json({token: token});
+      }
+
+      return res.status(500).json({error: 'Something went wrong'});
+
+    } catch (e) {
+      console.log(e);
     }
-
-    return res.json({status: 300, error: 'Unauthorized'});
   }
 };
 

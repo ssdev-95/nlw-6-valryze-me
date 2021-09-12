@@ -22,17 +22,12 @@ class AddUserService {
       if(!docRef) {
         throw new Error('Something went wrong');
       }
-
-      token = await jsonwebtoken.sign(
-        {
-          id:docRef.id,
-          name:user.name,
-          email:user.email
-        },
+    
+      token = jsonwebtoken.sign(
+        { id: docRef.id },
         key,
-        { algorithm: 'RS256' }
+        { algorithm: 'HS256' }
       );
-
     } catch (e) {
       if (e instanceof Error) {
         throw new Error(e.message);
